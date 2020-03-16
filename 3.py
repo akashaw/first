@@ -1,30 +1,30 @@
-iseven=lambda x:x%2==0
 
-a='t9@a42&516'
-b=list('~!@#$%^&*()_+{}|:<>?`-=[]\;,./')
-a=list(a)
-s_c=0;  even=[];    odd=[]; ans=[]
-for i in a:
-    if i in b:
-        s_c+=1
-    if i.isdigit():
-        if iseven(int(i)):
-            even.append(i)
+string='t24613579@a&'
+
+even=[]
+odd=[]
+special_char=0
+for ch in string:
+    if(ch.isalnum() == False):
+        special_char+=1
+    elif(ch.isdigit()):
+        if int(ch)%2==0:
+            even.append(ch)
         else:
-            odd.append(i)
+            odd.append(ch)
 
-for i in range(min(len(even),len(odd))):
-    if iseven(s_c):
-        ans.append(even[i])
-        ans.append(odd[i])
-    else:
-        ans.append(odd[i])
-        ans.append(even[i])
-
-if not (iseven(len(even)+len(odd))):
-    if iseven(s_c):
-        ans.append(even[-1])
-    else:
-        ans.append(odd[-1])
-print(''.join(ans))
-
+if(special_char%2!=0):
+      odd,even=even,odd
+even_len=len(even)
+odd_len=len(odd)
+m=max(even_len,odd_len)
+print(even,odd,even_len,odd_len,m)
+e=0
+o=0
+for i in range(m):
+    if(e!=even_len):
+        print(even[e],end='')
+        e+=1
+    if(o!=odd_len):
+        print(odd[o],end='')
+        o+=1
